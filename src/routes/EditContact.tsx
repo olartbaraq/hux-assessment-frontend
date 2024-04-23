@@ -109,6 +109,7 @@ const EditContact = () => {
 
   const deleteContact = (contact_id: string) => {
     mutate(contact_id);
+    navigate("/contacts/all-contacts");
   };
 
   return (
