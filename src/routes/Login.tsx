@@ -73,7 +73,7 @@ const Login = () => {
           autoClose: 2000,
           theme: "light",
         });
-        navigate("/contacts");
+        navigate("/contacts/all-contacts");
         form.reset();
       } else {
         toast.error("Uh Oh! Something went wrong !!!", {

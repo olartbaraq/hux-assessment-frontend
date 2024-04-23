@@ -19,6 +19,7 @@ const defaultState = {
     user: {
       id: "",
       email: "",
+      name: "",
     },
     token: "",
     isLoggedIn: false,
@@ -56,11 +57,11 @@ export const ContextProvider = ({ children }: ContextProviderProps) => {
     localStorage.removeItem("userData");
   };
 
-  const timeoutId = setTimeout(clearLocalStorage, 60 * 60 * 1000);
+  const timeoutId = setTimeout(clearLocalStorage, 30 * 60 * 1000);
 
   const resetTimeout = () => {
     clearTimeout(timeoutId);
-    setTimeout(clearLocalStorage, 60 * 60 * 1000);
+    setTimeout(clearLocalStorage, 30 * 60 * 1000);
   };
 
   document.addEventListener("click", resetTimeout);

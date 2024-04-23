@@ -7,6 +7,7 @@ export type UserResponse = {
 export type UserData = {
   email: string;
   id: string;
+  name: string;
 };
 
 export type signupUser = {
@@ -19,4 +20,21 @@ export type signUpResponse = {
   data: {
     name: string;
   };
+};
+
+export type Contact = {
+  id: string;
+  firstname: string;
+  lastname: string;
+  phone_number: string;
+};
+
+export type ContactParams = {
+  firstname: string;
+  lastname: string;
+  phone_number: string;
+};
+
+export type Contacts = {
+  contacts: Contact[];
 };
