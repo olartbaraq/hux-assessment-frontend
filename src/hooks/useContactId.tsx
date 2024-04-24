@@ -3,9 +3,15 @@ import axios from "axios";
 import { UserContext } from "../context/ContextProvider";
 import { useContext } from "react";
 import { toast } from "react-toastify";
-import { UserResponse } from "../typings";
+import { Contact, UserResponse } from "../typings";
 
-const fetchContactId = async (userData: UserResponse, id: string) => {
+const fetchContactId = async ({
+  userData,
+  contact_id,
+}: {
+  userData: UserResponse;
+  contact_id: string;
+}) => {
   const headers = {
     Accept: "application/json",
     Authorization: `Bearer ${userData.token}`,
@@ -13,7 +19,7 @@ const fetchContactId = async (userData: UserResponse, id: string) => {
 
   try {
     const { data } = await axios.get(
-      `http://127.0.0.1:8000/api/v1/contact/retrieve-contact/${id}/`,
+      `http://127.0.0.1:8000/api/v1/contact/retrieve-contact/${contact_id}/`,
       { headers: headers }
     );
     //console.log(data);
@@ -28,11 +34,15 @@ const fetchContactId = async (userData: UserResponse, id: string) => {
   }
 };
 
-const useContactId = (id: string) => {
+const useContactId = ({ contact_id }: { contact_id: string }) => {
   const { userData } = useContext(UserContext);
-  return useQuery({
+
+  const fetchContactsWithUserData = () =>
+    fetchContactId({ userData, contact_id });
+
+  return useQuery<Contact, Error>({
     queryKey: ["contacts"],
-    queryFn: () => fetchContactId(userData, id),
+    queryFn: () => fetchContactsWithUserData(),
   });
 };
 

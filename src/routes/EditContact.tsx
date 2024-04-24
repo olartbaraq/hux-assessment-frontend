@@ -8,9 +8,8 @@ import { ContactParams } from "../typings";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-// import useContactId from "../hooks/useContactId";
-// import useRefetchOnPageReload from "../hooks/useRefetchOnPageReload";
 import useDelete from "../hooks/useDelete";
+// import useContactId from "../hooks/useContactId";
 
 const contactFormSchema = z.object({
   lastname: z
@@ -41,15 +40,11 @@ const contactFormSchema = z.object({
 const requiredForm = contactFormSchema.required();
 
 const EditContact = () => {
-  const { contact_id } = useParams();
+  const { contact_id = "" } = useParams<{ contact_id: string }>();
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState<boolean>(false);
   const { userData } = useContext(UserContext);
-  //const { data, isPending, refetch } = useContactId(contact_id);
-
-  // useRefetchOnPageReload(refetch);
-
-  // console.log(data, contact_id);
+  //const { data, isPending } = useContactId({ contact_id });
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof requiredForm>>({
@@ -60,6 +55,20 @@ const EditContact = () => {
       phone_number: "",
     },
   });
+
+  // useEffect(() => {
+  //   if (data) {
+  //     form.reset({
+  //       lastname: data.lastname,
+  //       firstname: data.firstname,
+  //       phone_number: data.phone_number,
+  //     });
+  //   }
+  // }, [data, form]);
+
+  // if (isPending) {
+  //   return <div>Loading...</div>;
+  // }
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof requiredForm>) {
@@ -101,15 +110,13 @@ const EditContact = () => {
     }
   }
 
-  // if (isPending) {
-  //   return <span>Loading...</span>;
-  // }
-
   const mutate = useDelete();
 
   const deleteContact = (contact_id: string) => {
-    mutate(contact_id);
-    navigate("/contacts/all-contacts");
+    if (contact_id) {
+      mutate(contact_id);
+      navigate("/contacts/all-contacts");
+    }
   };
 
   return (
@@ -169,7 +176,7 @@ const EditContact = () => {
             {/* Delete button */}
             <div
               onClick={() => deleteContact(contact_id)}
-              className="w-full bg-red-700 text-white py-2 rounded-md items-center justify-center"
+              className="w-full bg-red-700 text-white py-2 flex rounded-md items-center justify-center"
             >
               Delete
             </div>

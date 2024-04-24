@@ -30,14 +30,9 @@ const fetchContacts = async (userData: UserResponse) => {
 
 const useContacts = () => {
   const { userData } = useContext(UserContext);
-  // const queryClient = useQueryClient();
   return useQuery({
     queryKey: ["contacts"],
     queryFn: () => fetchContacts(userData),
-    // onSuccess: () => {
-    //   // Invalidate any queries that match the "contacts" query key
-    //   queryClient.invalidateQueries({ queryKey: ["contacts"] });
-    // },
   });
 };
 
