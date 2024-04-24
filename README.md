@@ -1,30 +1,38 @@
-# React + TypeScript + Vite
+A React-Typescript assessment task from [Hux Ventures](hello@hux.vc)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Contact Application Frontend in React-Typescript
 
-Currently, two official plugins are available:
+![python](https://badgen.net/badge/Built%20With/typescript/blue)
+![react](https://badgen.net/badge/Built%20With/react/blue)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A simple implementation UI of a contact application written in React.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Basic authorization and authentication functionality.
+- Welcome Aboard email to users.
+- Basic Create, Update, Retrieve and Delete operations on contacts.
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. Clone the repository:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+   ```bash
+   run git clone git@github.com:olartbaraq/hux-assessment-frontend.git
+   run cd hux-assessment-frontend
+   ```
+
+2. Prepare a standalone environment using anaconda or any python env. creation tool:
+
+   ```bash
+   run npm install
+   ```
+
+## Usage
+
+1. Run the Django server :
+
+   ```bash
+   run npm run dev
+   goto http://localhost:5173/ to interact with the website
+   ```
