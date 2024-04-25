@@ -22,7 +22,7 @@ A simple implementation UI of a contact application written in React.
    run cd hux-assessment-frontend
    ```
 
-2. Prepare a standalone environment using anaconda or any python env. creation tool:
+2. Install the necessary dependencies:
 
    ```bash
    run npm install
@@ -30,7 +30,7 @@ A simple implementation UI of a contact application written in React.
 
 ## Usage
 
-1. Run the Django server :
+1. Run the Vite server :
 
    ```bash
    run npm run dev
